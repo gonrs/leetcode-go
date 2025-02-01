@@ -1,0 +1,120 @@
+:root {
+	/* Color */
+	--main-white-color: #fdffeb;
+	--main-black-color: #1f1f1d;
+	--main-black-dark-color: #1a1a1a;
+	--main-black-light-color: #454540;
+	--main-black-light-color-2: #292927;
+	/*  */
+	--main-active-color: #1fb8cd;
+	--main-error-color: #fd2121;
+	--main-light-error-color: #ffcece;
+	/* Color */
+	/* Vars */
+	--var-min-height: calc(100vh - 65px);
+	/* Vars */
+}
+body,
+html {
+	font-family: 'Inter', sans-serif;
+	margin: 0;
+	background: var(--main-black-color);
+	padding: 0;
+	color: var(--main-white-color);
+	font-style: normal;
+}
+body.no-scroll {
+	overflow: hidden;
+}
+* {
+	box-sizing: border-box;
+}
+img {
+	max-width: 100%;
+}
+textarea:focus,
+input:focus,
+select:focus,
+button:focus {
+	outline: none;
+	color: var(--main-white-color);
+}
+button {
+	border: none;
+	background: none;
+	cursor: pointer;
+	color: var(--main-white-color);
+}
+button:disabled {
+	cursor: not-allowed;
+}
+input {
+	border: none;
+	color: var(--main-white-color);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0;
+}
+li,
+ol,
+ul,
+a {
+	margin: 0;
+	list-style: none;
+	text-decoration: none;
+	padding: 0;
+	color: var(--main-active-color);
+}
+p {
+	margin: 0;
+	padding: 0;
+	color: var(--main-white-color);
+}
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: none;
+}
+::-webkit-scrollbar-thumb {
+	background-color: var(--main-active-color);
+	border-radius: 8px;
+}
+.container {
+	margin: 0 auto;
+	max-width: 1250px;
+	padding: 0 15px;
+	min-height: var(--var-min-height);
+	/* padding: 10px; */
+}
+/* LayOut */
+.layOut-container {
+	width: 100vw;
+}
+/* LayOut */
+/* Base */
+.btn {
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6em 1.2em;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+	background-color: var(--main-black-dark-color);
+	cursor: pointer;
+	transition: all 0.25s;
+}
+.btn:hover {
+	border-color: var(--main-active-color);
+	color: var(--main-active-color);
+}
+.btn:focus,
+.btn:focus-visible {
+	outline: 4px auto -webkit-focus-ring-color;
+}
+/* Base */
