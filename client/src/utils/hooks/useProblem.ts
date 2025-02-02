@@ -8,7 +8,9 @@ export const useProblem = () => {
 		to: number
 	): Promise<IProblemSub[] | null> {
 		try {
-			const res = await instance.get<IProblemSub[]>('/problems/')
+			const res = await instance.get<IProblemSub[]>(
+				ServerURLS.getProblems + `?from=${from}&to=${to}`
+			)
 			if (res.status === 200) {
 				console.log(res.data)
 				return res.data
@@ -21,7 +23,7 @@ export const useProblem = () => {
 	}
 	async function getProblem(id: number): Promise<IProblem | null> {
 		try {
-			const res = await instance.get<IProblem>(ServerURLS.getProblems + id)
+			const res = await instance.get<IProblem>(ServerURLS.getProblem + id)
 			if (res.status === 200) {
 				console.log(res.data)
 				return res.data

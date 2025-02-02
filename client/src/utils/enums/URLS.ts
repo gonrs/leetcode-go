@@ -4,5 +4,6 @@ export enum URLS {
 }
 export enum ServerURLS {
 	checksServer = '/',
-	getProblems = '/problems/',
+	getProblem = '/problems/',
+	getProblems = '/problems',
 }

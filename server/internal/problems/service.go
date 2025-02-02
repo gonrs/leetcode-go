@@ -2,6 +2,7 @@ package problems
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gonrs/leetcode-go/common/models"
@@ -12,7 +13,7 @@ import (
 type AddProblemRequestBody struct {
 	Title      string `json:"title"`
 	Body       string `json:"body"`
-	Difficulty int `json:"difficulty"`
+	Difficulty int    `json:"difficulty"`
 }
 
 func (h handler) AddProblem(ctx *gin.Context) {
@@ -39,8 +40,19 @@ func (h handler) AddProblem(ctx *gin.Context) {
 // FUNCTION: GET ALL PROBLEMS
 func (h handler) GetProblems(ctx *gin.Context) {
 	var problems []models.Problem
-	start, end := 0, 20
-	if result := h.DB.Offset(start).Limit(end - start).Find(&problems); result.Error != nil {
+	start, end := ctx.DefaultQuery("from", "0"), ctx.DefaultQuery("to", "3")
+	s, err := strconv.Atoi(start)
+	if err != nil {
+		ctx.AbortWithError(http.StatusNotFound, err)
+		return
+	}
+	e, err := strconv.Atoi(end)
+	if err != nil {
+		ctx.AbortWithError(http.StatusNotFound, err)
+		return
+	}
+
+	if result := h.DB.Offset(s).Limit(e - s).Find(&problems); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
 		return
 	}
@@ -66,7 +78,7 @@ func (h handler) GetProblem(ctx *gin.Context) {
 type UpdateProblemRequestBody struct {
 	Title      string `json:"title"`
 	Body       string `json:"body"`
-	Difficulty int `json:"difficulty"`
+	Difficulty int    `json:"difficulty"`
 }
 
 func (h handler) UpdateProblem(ctx *gin.Context) {

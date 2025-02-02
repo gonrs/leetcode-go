@@ -21,14 +21,15 @@ func main() {
 	router := gin.Default()
 	dbHandler := db.Init(dbUrl)
 	//
-	router.Use(cors.New(cors.Config{
+	config := cors.Config{
 		AllowOrigins:     []string{"http://localhost:5173"},                                                  // Разрешенные источники
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},                                           // Разрешенные методы
 		AllowHeaders:     []string{"Access-Control-Allow-Origin", "Origin", "Content-Type", "Authorization"}, // Разрешенные заголовки
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,           // Разрешить отправку учетных данных
 		MaxAge:           12 * time.Hour, // Время кэширования
-	}))
+	}
+	router.Use(cors.New(config))
 	//
 	problems.RegisterRoutes(router, dbHandler)
 

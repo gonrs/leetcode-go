@@ -1,44 +1,14 @@
-import { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import s from './style.module.css'
-import { useProblem } from '@hooks/useProblem'
-import { IProblemSub } from '@type/problemTypes'
-import SubProblem from '@components/subProblem/SubProblem'
+import { Link } from 'react-router'
+import { Button } from '@ui'
 
 const Home: FC = ({}) => {
-	const { getProblems } = useProblem()
-	const [problemCoord, setProblemCoord] = useState({ from: 0, to: 10 })
-	const [problems, setProblems] = useState<IProblemSub[]>([])
-
-	async function getStartProblems() {
-		try {
-			const data = await getProblems(problemCoord.from, problemCoord.to)
-			if (data != null) {
-				setProblems(data)
-			}
-		} catch (err) {
-			console.log(err)
-		}
-	}
-
-	useEffect(() => {
-		getStartProblems()
-	}, [])
 	return (
-		<div>
-			<div className={s.problems}>
-				{problems.map((val, index) => {
-					return (
-						<SubProblem
-							title={val.title}
-							id={val.ID}
-							key={index}
-							difficulty={val.difficulty}
-						/>
-					)
-				})}
-			</div>
-			{/* <div className={s.setProblemsCoord}> */}
-			{/* </div> */}
+		<div className={s.home}>
+			<Button size='large'>
+				<Link to={'/problemset'}>Problems</Link>
+			</Button>
 		</div>
 	)
 }
