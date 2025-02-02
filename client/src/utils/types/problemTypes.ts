@@ -1,7 +1,11 @@
 export interface IProblem {
 	ID: number
 	title: string
+	CreatedAt: string
+	DeletedAt: string
+	UpdatedAt: string
 	body: string
+	difficulty: number
 }
 
 export interface IProblemSub {
@@ -10,4 +14,5 @@ export interface IProblemSub {
 	CreatedAt: string
 	DeletedAt: string
 	UpdatedAt: string
+	difficulty: number
 }

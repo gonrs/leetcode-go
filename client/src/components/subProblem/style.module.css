@@ -15,3 +15,12 @@
 .title {
 	font-size: 14px;
 }
+.easy {
+	color: var(--main-sub-active-color);
+}
+.medium {
+	color: var(--main-active-color);
+}
+.hard {
+	color: var(--main-error-color);
+}

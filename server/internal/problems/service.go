@@ -3,16 +3,16 @@ package problems
 import (
 	"net/http"
 
-	"github.com/gonrs/leetcode-go/common/models"
-
 	"github.com/gin-gonic/gin"
+	"github.com/gonrs/leetcode-go/common/models"
 )
 
 // FUNCTION: ADD PROBLEM
 
 type AddProblemRequestBody struct {
-	Title string `json:"title"`
-	Body  string `json:"body"`
+	Title      string `json:"title"`
+	Body       string `json:"body"`
+	Difficulty int `json:"difficulty"`
 }
 
 func (h handler) AddProblem(ctx *gin.Context) {
@@ -22,11 +22,11 @@ func (h handler) AddProblem(ctx *gin.Context) {
 		ctx.AbortWithError(http.StatusBadRequest, err)
 		return
 	}
-
 	var problem models.Problem
 	//
 	problem.Title = body.Title
 	problem.Body = body.Body
+	problem.Difficulty = body.Difficulty
 	//
 	if result := h.DB.Create(&problem); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
@@ -64,8 +64,9 @@ func (h handler) GetProblem(ctx *gin.Context) {
 
 // FUNCTION: UPDATE PROBLEM
 type UpdateProblemRequestBody struct {
-	Title string `json:"title"`
-	Body  string `json:"body"`
+	Title      string `json:"title"`
+	Body       string `json:"body"`
+	Difficulty int `json:"difficulty"`
 }
 
 func (h handler) UpdateProblem(ctx *gin.Context) {
@@ -87,6 +88,7 @@ func (h handler) UpdateProblem(ctx *gin.Context) {
 	//
 	problem.Title = body.Title
 	problem.Body = body.Body
+	problem.Difficulty = body.Difficulty
 	//
 
 	h.DB.Save(&problem)

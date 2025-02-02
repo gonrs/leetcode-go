@@ -27,7 +27,14 @@ const Home: FC = ({}) => {
 		<div>
 			<div className={s.problems}>
 				{problems.map((val, index) => {
-					return <SubProblem title={val.title} id={val.ID} key={index} />
+					return (
+						<SubProblem
+							title={val.title}
+							id={val.ID}
+							key={index}
+							difficulty={val.difficulty}
+						/>
+					)
 				})}
 			</div>
 			{/* <div className={s.setProblemsCoord}> */}

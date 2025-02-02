@@ -27,11 +27,19 @@ const Problem: FC = ({}) => {
 		getP()
 	}, [])
 
+	let dif: string = 'easy'
+	if (problem?.difficulty == 1) {
+		dif = 'medium'
+	} else if (problem?.difficulty == 2) {
+		dif = 'hard'
+	}
+
 	return (
 		<div>
 			<h1>{problem?.ID}</h1>
 			<h2>{problem?.title}</h2>
 			<p>{problem?.body}</p>
+			<p>{dif}</p>
 		</div>
 	)
 }
