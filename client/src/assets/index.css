@@ -22,6 +22,7 @@ html {
 	padding: 0;
 	color: var(--main-white-color);
 	font-style: normal;
+	overflow-x: hidden;
 }
 body.no-scroll {
 	overflow: hidden;

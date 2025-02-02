@@ -2,6 +2,7 @@ package problems
 
 import (
 	"net/http"
+
 	"github.com/gonrs/leetcode-go/common/models"
 
 	"github.com/gin-gonic/gin"
@@ -38,8 +39,8 @@ func (h handler) AddProblem(ctx *gin.Context) {
 // FUNCTION: GET ALL PROBLEMS
 func (h handler) GetProblems(ctx *gin.Context) {
 	var problems []models.Problem
-
-	if result := h.DB.Find(&problems); result.Error != nil {
+	start, end := 0, 20
+	if result := h.DB.Offset(start).Limit(end - start).Find(&problems); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
 		return
 	}
