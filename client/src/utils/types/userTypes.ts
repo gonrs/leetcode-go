@@ -1,5 +1,4 @@
 import { ROLE } from '@enums/ROLE'
-
 export interface IUser {
 	id: number
 	userName: string

@@ -1,7 +1,6 @@
 import { instance } from '@api/axios.api'
 import { ServerURLS } from '@enums/URLS'
 import { IProblem, IProblemSub } from '@type/problemTypes'
-
 export const useProblem = () => {
 	async function getProblems(
 		from: number,
@@ -34,6 +33,5 @@ export const useProblem = () => {
 			return null
 		}
 	}
-
 	return { getProblem, getProblems }
 }

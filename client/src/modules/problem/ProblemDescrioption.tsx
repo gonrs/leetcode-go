@@ -2,11 +2,9 @@ import React, { FC } from 'react'
 import s from './style.module.css'
 import { IProblem } from '@type/problemTypes'
 import MarkdownRenderer from '@components/markDown/MarkDownReader'
-
 interface IProblemDescrioptionProps {
 	problem: IProblem | undefined
 }
-
 const ProblemDescrioption: FC<IProblemDescrioptionProps> = ({ problem }) => {
 	if (!problem) {
 		return <div className={s.problemBody}>Loading....</div>
@@ -30,5 +28,4 @@ const ProblemDescrioption: FC<IProblemDescrioptionProps> = ({ problem }) => {
 		</div>
 	)
 }
-
 export default ProblemDescrioption

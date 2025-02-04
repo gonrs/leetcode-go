@@ -1,9 +1,7 @@
 import { FC } from 'react'
 import { Link } from 'react-router'
 import s from './style.module.css'
-
 const ErrorPage: FC = () => {
-	//
 	return (
 		<div className={s.errorPageCon}>
 			<div className={s.errorPage}>

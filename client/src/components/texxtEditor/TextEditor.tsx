@@ -1,21 +1,16 @@
 import React, { FC, useState } from 'react'
 import s from './style.module.css'
-
 interface ITextEditorProps {
 	startCode: string
 	onChange: (value: string) => void
 }
-
 const TextEditor: FC<ITextEditorProps> = ({ startCode, onChange }) => {
 	const [text, setText] = useState<string>(startCode)
-
 	const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setText(event.target.value)
 		onChange(event.target.value)
 	}
-
 	const lines = text.split('\n')
-
 	return (
 		<div className={s.editorContainer}>
 			<div className={s.lineNumbers}>
@@ -29,5 +24,4 @@ const TextEditor: FC<ITextEditorProps> = ({ startCode, onChange }) => {
 		</div>
 	)
 }
-
 export default TextEditor

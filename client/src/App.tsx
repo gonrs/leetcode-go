@@ -4,7 +4,6 @@ import { MainRoute } from '@routes/MainRoute.tsx'
 import { useEffect } from 'react'
 import { instance } from '@api/axios.api'
 import { ServerURLS } from '@enums/URLS'
-
 function App() {
 	async function checkServerStatus() {
 		try {
@@ -17,12 +16,10 @@ function App() {
 	useEffect(() => {
 		checkServerStatus()
 	}, [])
-
 	return (
 		<>
 			<RouterProvider router={MainRoute} />
 		</>
 	)
 }
-
 export default App

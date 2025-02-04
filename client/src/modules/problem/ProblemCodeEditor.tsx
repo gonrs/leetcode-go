@@ -3,7 +3,6 @@ import s from './style.module.css'
 import TextEditor from '@components/texxtEditor/TextEditor'
 import { Button } from '@ui'
 import { IProblem } from '@type/problemTypes'
-
 interface IProblemCodeEditor {
 	problem: IProblem | undefined
 }
@@ -34,5 +33,4 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({ problem }) => {
 		</div>
 	)
 }
-
 export default ProblemCodeEditor

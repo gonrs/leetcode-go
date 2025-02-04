@@ -4,7 +4,6 @@ import { useProblem } from '@hooks/useProblem'
 import { IProblemSub } from '@type/problemTypes'
 import SubProblem from '@components/subProblem/SubProblem'
 import { Button } from '@ui'
-
 const Problemset: FC = ({}) => {
 	const { getProblems } = useProblem()
 	const [problemsPageLen, setProblemsPageLen] = useState(7)
@@ -13,7 +12,6 @@ const Problemset: FC = ({}) => {
 		to: problemsPageLen,
 	})
 	const [problems, setProblems] = useState<IProblemSub[]>([])
-
 	async function getStartProblems(from: number, to: number) {
 		try {
 			const data = await getProblems(from, to)
@@ -59,7 +57,6 @@ const Problemset: FC = ({}) => {
 					)
 				})}
 			</div>
-
 			<div className={s.setProblemsCoord}>
 				{problemCoord.from != 0 ? (
 					<Button onClick={() => handleClick(false)} size='medium'>
@@ -79,5 +76,4 @@ const Problemset: FC = ({}) => {
 		</div>
 	)
 }
-
 export default Problemset

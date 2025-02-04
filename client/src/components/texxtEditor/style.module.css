@@ -5,7 +5,6 @@
 	background-color: var(--main-black-dark-color);
 	overflow: hidden;
 }
-
 .lineNumbers {
 	background-color: var(--main-black-light-color-2);
 	padding: 10px;
@@ -15,12 +14,10 @@
 	border-radius: 7px 0 0 7px;
 	user-select: none;
 }
-
 .lineNumber {
 	padding: 0;
 	font-size: 13px;
 }
-
 .textArea {
 	flex: 1;
 	border: none;

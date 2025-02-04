@@ -31,5 +31,4 @@ const Problem: FC = ({}) => {
 		</div>
 	)
 }
-
 export default Problem

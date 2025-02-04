@@ -9,7 +9,6 @@
 	transition: all 0.3s;
 	border: 1px solid var(--main-black-light-color-2);
 }
-
 .input.primary {
 	border: 1px solid var(--main-active-color);
 	color: var(--main-active-color);
@@ -18,7 +17,6 @@
 	border: 1px solid var(--main-active-color);
 	color: var(--main-active-color);
 }
-
 .input.large {
 	min-width: clamp(12.5rem, 4.545rem + 39.77vw, 34.375rem);
 }

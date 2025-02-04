@@ -8,7 +8,6 @@ export interface IProblem {
 	difficulty: number
 	startCode: string
 }
-
 export interface IProblemSub {
 	ID: number
 	title: string

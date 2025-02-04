@@ -2,7 +2,6 @@ import { Link } from "react-router"
 import s from './style.module.css'
 import { FC } from "react"
 import { URLS } from "@enums/URLS"
-
 const Header: FC = ({}) => {
 	return (
 		<header className={s.header}>
@@ -15,5 +14,4 @@ const Header: FC = ({}) => {
 		</header>
 	)
 }
-
 export default Header

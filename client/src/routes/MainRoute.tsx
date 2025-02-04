@@ -4,7 +4,6 @@ import Problem from '@pages/problem/Problem'
 import { createBrowserRouter } from 'react-router'
 import Problemset from '@pages/problemset/Problemset'
 import Home from '@pages/home/Home'
-
 export const MainRoute = createBrowserRouter([
 	{
 		path: '/',
