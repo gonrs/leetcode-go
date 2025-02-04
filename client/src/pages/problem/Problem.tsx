@@ -3,6 +3,7 @@ import s from './style.module.css'
 import { useParams } from 'react-router'
 import { useProblem } from '@hooks/useProblem'
 import { IProblem } from '@type/problemTypes'
+import ProblemDescrioption from '@modules/problem/ProblemDescrioption'
 
 const Problem: FC = ({}) => {
 	const { id } = useParams()
@@ -27,19 +28,11 @@ const Problem: FC = ({}) => {
 		getP()
 	}, [])
 
-	let dif: string = 'easy'
-	if (problem?.difficulty == 1) {
-		dif = 'medium'
-	} else if (problem?.difficulty == 2) {
-		dif = 'hard'
-	}
+
 
 	return (
-		<div>
-			<h1>{problem?.ID}</h1>
-			<h2>{problem?.title}</h2>
-			<p>{problem?.body}</p>
-			<p>{dif}</p>
+		<div className={s.problemCon}>
+			<ProblemDescrioption problem={problem}/>
 		</div>
 	)
 }

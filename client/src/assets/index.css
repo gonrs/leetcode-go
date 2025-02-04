@@ -91,7 +91,7 @@ p {
 .container {
 	margin: 0 auto;
 	max-width: 1250px;
-	padding: 0 15px;
+	padding: 0 5px;
 	min-height: var(--var-min-height);
 	/* padding: 10px; */
 }

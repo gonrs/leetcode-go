@@ -1,0 +1,52 @@
+.problemBody {
+	width: 35vw;
+	/* width: 496px; */
+  min-width: 400px;
+	padding: 15px;
+	margin: 5px;
+	border-radius: 10px;
+	background-color: var(--main-black-light-color-2);
+}
+.problemBodyTitle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.problemBodyTitle h1 {
+	font-size: 21px;
+}
+.problemBodyTitle h2 {
+	font-size: 18px;
+}
+.problemBodyTitle span {
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6em 1em;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+	background-color: var(--main-black-dark-color);
+	transition: all 0.25s;
+	font-size: 13px;
+}
+.problemBodyTitle span.easy {
+	border-color: var(--main-sub-active-color);
+	color: var(--main-sub-active-color);
+}
+.problemBodyTitle span.medium {
+	border-color: var(--main-active-color);
+	color: var(--main-active-color);
+}
+.problemBodyTitle span.hard {
+	border-color: var(--main-error-color);
+	color: var(--main-error-color);
+}
+.problemBodyTitle h1.easy {
+	color: var(--main-sub-active-color);
+}
+.problemBodyTitle h1.medium {
+	color: var(--main-active-color);
+}
+.problemBodyTitle h1.hard {
+	color: var(--main-error-color);
+}

@@ -1,0 +1,7 @@
+.markdown {
+  font-size: 14px; 
+  line-height: 1.6;
+}
+.markdown p {
+  margin: 1em 0; /* Увеличьте отступы между параграфами */
+}

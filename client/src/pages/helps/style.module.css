@@ -62,7 +62,7 @@
 .container {
 	margin: 0 auto;
 	max-width: 1250px;
-	padding: 0px 15px;
+	padding: 0px 5px;
 	min-height: var(--var-min-height);
 }
 /* Error Page */
