@@ -6,6 +6,7 @@ export interface IProblem {
 	UpdatedAt: string
 	body: string
 	difficulty: number
+	startCode: string
 }
 
 export interface IProblemSub {

@@ -4,13 +4,11 @@ import { useParams } from 'react-router'
 import { useProblem } from '@hooks/useProblem'
 import { IProblem } from '@type/problemTypes'
 import ProblemDescrioption from '@modules/problem/ProblemDescrioption'
-
+import ProblemCodeEditor from '@modules/problem/ProblemCodeEditor'
 const Problem: FC = ({}) => {
 	const { id } = useParams()
-
 	const { getProblem } = useProblem()
 	const [problem, setProblem] = useState<IProblem>()
-
 	async function getP() {
 		try {
 			const data = await getProblem(Number(id))
@@ -23,16 +21,13 @@ const Problem: FC = ({}) => {
 			console.log(err)
 		}
 	}
-
 	useEffect(() => {
 		getP()
 	}, [])
-
-
-
 	return (
 		<div className={s.problemCon}>
-			<ProblemDescrioption problem={problem}/>
+			<ProblemDescrioption problem={problem} />
+			<ProblemCodeEditor problem={problem} />
 		</div>
 	)
 }

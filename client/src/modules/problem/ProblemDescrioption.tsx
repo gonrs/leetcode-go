@@ -24,7 +24,9 @@ const ProblemDescrioption: FC<IProblemDescrioptionProps> = ({ problem }) => {
 				<h2>{problem.title}</h2>
 				<span className={s[dif]}>{dif}</span>
 			</div>
-			<MarkdownRenderer markdown={problem.body} />
+			<div className={s.problemBodyDesc}>
+				<MarkdownRenderer markdown={problem.body} />
+			</div>
 		</div>
 	)
 }

@@ -14,6 +14,7 @@ type AddProblemRequestBody struct {
 	Title      string `json:"title"`
 	Body       string `json:"body"`
 	Difficulty int    `json:"difficulty"`
+	StartCode  string `json:"startCode"`
 }
 
 func (h handler) AddProblem(ctx *gin.Context) {
@@ -28,6 +29,7 @@ func (h handler) AddProblem(ctx *gin.Context) {
 	problem.Title = body.Title
 	problem.Body = body.Body
 	problem.Difficulty = body.Difficulty
+	problem.StartCode = body.StartCode
 	//
 	if result := h.DB.Create(&problem); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
@@ -75,15 +77,15 @@ func (h handler) GetProblem(ctx *gin.Context) {
 }
 
 // FUNCTION: UPDATE PROBLEM
-type UpdateProblemRequestBody struct {
-	Title      string `json:"title"`
-	Body       string `json:"body"`
-	Difficulty int    `json:"difficulty"`
-}
+// type UpdateProblemRequestBody struct {
+// 	Title      string `json:"title"`
+// 	Body       string `json:"body"`
+// 	Difficulty int    `json:"difficulty"`
+// }
 
 func (h handler) UpdateProblem(ctx *gin.Context) {
 	id := ctx.Param("id")
-	body := UpdateProblemRequestBody{}
+	body := AddProblemRequestBody{}
 
 	if err := ctx.BindJSON(&body); err != nil {
 		ctx.AbortWithError(http.StatusBadRequest, err)
@@ -101,6 +103,7 @@ func (h handler) UpdateProblem(ctx *gin.Context) {
 	problem.Title = body.Title
 	problem.Body = body.Body
 	problem.Difficulty = body.Difficulty
+	problem.StartCode = body.StartCode
 	//
 
 	h.DB.Save(&problem)

@@ -7,4 +7,5 @@ type Problem struct {
 	Title      string `json:"title"`
 	Body       string `json:"body"`
 	Difficulty int    `json:"difficulty"`
+	StartCode  string `json:"startCode"`
 }

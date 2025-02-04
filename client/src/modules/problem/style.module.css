@@ -1,11 +1,19 @@
 .problemBody {
 	width: 35vw;
-	/* width: 496px; */
-  min-width: 400px;
+	min-width: 400px;
+	/* max-height: calc(95vh - 65px); */
 	padding: 15px;
 	margin: 5px;
 	border-radius: 10px;
 	background-color: var(--main-black-light-color-2);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.problemBodyDesc {
+	max-height: calc(95vh - 175px);
+	max-height: auto;
+	overflow: auto;
 }
 .problemBodyTitle {
 	display: flex;
@@ -49,4 +57,26 @@
 }
 .problemBodyTitle h1.hard {
 	color: var(--main-error-color);
+}
+/*  */
+.problemCodeEditor {
+	width: 63vw;
+	min-width: 400px;
+	margin: 5px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+/*  */
+.problemSend{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--main-black-light-color-2);
+	padding: 6px;
+	border-radius: 8px;
+}
+.problemSendButtons{
+	display: flex;
+	gap: 10px;
 }
