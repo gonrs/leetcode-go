@@ -14,7 +14,7 @@ type AddProblemRequestBody struct {
 	Title      string `json:"title"`
 	Body       string `json:"body"`
 	Difficulty int    `json:"difficulty"`
-	StartCode  string `json:"startCode"`
+	Code  string `json:"code"`
 }
 
 func (h handler) AddProblem(ctx *gin.Context) {
@@ -24,12 +24,12 @@ func (h handler) AddProblem(ctx *gin.Context) {
 		ctx.AbortWithError(http.StatusBadRequest, err)
 		return
 	}
-	var problem models.Problem
+	var problem 	models.Problem
 	//
 	problem.Title = body.Title
 	problem.Body = body.Body
 	problem.Difficulty = body.Difficulty
-	problem.StartCode = body.StartCode
+	problem.Code = body.Code
 	//
 	if result := h.DB.Create(&problem); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
@@ -103,7 +103,7 @@ func (h handler) UpdateProblem(ctx *gin.Context) {
 	problem.Title = body.Title
 	problem.Body = body.Body
 	problem.Difficulty = body.Difficulty
-	problem.StartCode = body.StartCode
+	problem.Code = body.Code
 	//
 
 	h.DB.Save(&problem)

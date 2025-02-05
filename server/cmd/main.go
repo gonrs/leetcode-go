@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gonrs/leetcode-go/common/db"
 	"github.com/gonrs/leetcode-go/internal/problems"
+	runcode "github.com/gonrs/leetcode-go/internal/runCode"
 	"github.com/spf13/viper"
 )
 
@@ -32,6 +33,7 @@ func main() {
 	router.Use(cors.New(config))
 	//
 	problems.RegisterRoutes(router, dbHandler)
+	runcode.RegisterRoutes(router, dbHandler)
 
 	router.GET("/", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{

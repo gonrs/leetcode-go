@@ -10,7 +10,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({ problem }) => {
 	if (!problem) {
 		return <div className={s.problemBody}>Loading....</div>
 	}
-	const [code, setCode] = useState(problem.startCode)
+	const [code, setCode] = useState(problem.code)
 	function sendTest() {
 		console.log(code)
 	}
@@ -21,7 +21,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({ problem }) => {
 		<div className={s.problemCodeEditor}>
 			<TextEditor
 				onChange={(code: string) => setCode(code)}
-				startCode={problem.startCode}
+				startCode={problem.code}
 			/>
 			<div className={s.problemSend}>
 				<Button onClick={sendTest}>Send Test</Button>
