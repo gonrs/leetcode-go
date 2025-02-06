@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
+	"os"
 	"os/exec"
 	"strings"
 )
@@ -15,24 +15,14 @@ type Test struct {
 }
 
 func main() {
-	code := `package main
-
-	import (
-		"fmt"
-		"os"
-	)
-	
-	func main() {
-		var input string
-		fmt.Scanln(&input) // Чтение входных данных
-		fmt.Println(input) // Вывод входных данных
-		fmt.Println("Special characters: \" \\ \\n \\t")
-	}`
+	startCode := "package main\n\nimport (\n\t\"fmt\" \n)\n\nfunc main() {\n\tvar (\n\t\ta int\n\t\tb int\n\t)\n\tfmt.Scanln(&a, &b)\n\tfmt.Println(Code(a, b))\n}\n"
+	code := "func Code(a int, b int) int{\n return a + b\n}\n"
 	tests := []Test{
-		{Input: "10", Output: "10\nSpecial characters: \" \\ \\n \\t\n"},
-		{Input: "11", Output: "11\nSpecial characters: \" \\ \\n \\t\n"},
+		{Input: "10 1", Output: "11"},
+		{Input: "11 11", Output: "22"},
+		{Input: "10 5", Output: "1"},
 	}
-	resultIndex, err := Run(code, tests)
+	resultIndex, err := Run(startCode, code, tests)
 	if err != nil {
 		fmt.Printf("Test %d failed: %v\n", resultIndex, err)
 	} else {
@@ -40,29 +30,26 @@ func main() {
 	}
 }
 
-func Run(Code string, Tests []Test) (int, error) {
+func Run(StartCode string, Code string, Tests []Test) (int, error) {
 	testIndex := 0
+	goFile := "./test/go/temp.go"
+	err := os.WriteFile(goFile, []byte(StartCode+"\n"+Code), 0644)
+	if err != nil {
+		return testIndex + 1, fmt.Errorf("error open file: %v", err)
+	}
 	for testIndex < len(Tests) {
-		input := Tests[testIndex].Input
-		expectedOutput := Tests[testIndex].Output
-
-		cmd := exec.Command("go", "run", "./test/run/code.go")
-		cmd.Stdin = strings.NewReader(input)
-
-		var out bytes.Buffer
-		cmd.Stdout = &out
-		var errOut bytes.Buffer
-		cmd.Stderr = &errOut
-
-		err := cmd.Run()
+		cmd := exec.Command("go", "run", goFile)
+		cmd.Stdin = strings.NewReader(Tests[testIndex].Input)
+		output, err := cmd.CombinedOutput()
 		if err != nil {
-			fmt.Println(out.String())
+			fmt.Println(output)
 			return testIndex + 1, fmt.Errorf("error running code: %v", err)
 		}
 
-		returnedOutput := out.String()
-		if returnedOutput != expectedOutput {
-			return testIndex + 1, fmt.Errorf("expected: %s, returned: %s", expectedOutput, returnedOutput)
+		actualOutput := strings.TrimSpace(string(output))
+		expectedOutput := strings.TrimSpace(Tests[testIndex].Output)
+		if actualOutput != expectedOutput {
+			return testIndex + 1, fmt.Errorf("test failed: expected %q, got %q", expectedOutput, actualOutput)
 		}
 		testIndex += 1
 	}

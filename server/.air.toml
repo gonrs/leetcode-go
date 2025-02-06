@@ -2,6 +2,8 @@ root = "."
 testdata_dir = "testdata"
 tmp_dir = "tmp"
 
+# exclude_dirs = ["./internal/runCode/lib/go", "go"]
+# exclude_files  = ["./internal/runCode/lib/go/temp.go"]
 [build]
   args_bin = []
   bin = "tmp\\main.exe"
@@ -9,7 +11,7 @@ tmp_dir = "tmp"
   delay = 1000
   exclude_dir = ["assets", "tmp", "vendor", "testdata", "web", "docs", "scripts"]
   exclude_file = []
-  exclude_regex = ["_test.go"]
+  exclude_regex = ["_test.go", "temp.go"]
   exclude_unchanged = false
   follow_symlink = false
   full_bin = ""

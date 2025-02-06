@@ -14,7 +14,8 @@ type AddProblemRequestBody struct {
 	Title      string `json:"title"`
 	Body       string `json:"body"`
 	Difficulty int    `json:"difficulty"`
-	Code  string `json:"code"`
+	Code       string `json:"code"`
+	HelpCode   string `json:"help_code"`
 }
 
 func (h handler) AddProblem(ctx *gin.Context) {
@@ -24,12 +25,13 @@ func (h handler) AddProblem(ctx *gin.Context) {
 		ctx.AbortWithError(http.StatusBadRequest, err)
 		return
 	}
-	var problem 	models.Problem
+	var problem models.Problem
 	//
 	problem.Title = body.Title
 	problem.Body = body.Body
 	problem.Difficulty = body.Difficulty
 	problem.Code = body.Code
+	problem.HelpCode = body.HelpCode
 	//
 	if result := h.DB.Create(&problem); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
@@ -63,6 +65,13 @@ func (h handler) GetProblems(ctx *gin.Context) {
 }
 
 // FUNCTION: GET PROBLEM
+type GetProblemResponse struct {
+	Title      string `json:"title"`
+	Body       string `json:"body"`
+	Difficulty int    `json:"difficulty"`
+	Code       string `json:"code"`
+}
+
 func (h handler) GetProblem(ctx *gin.Context) {
 	id := ctx.Param("id")
 
@@ -73,16 +82,29 @@ func (h handler) GetProblem(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, &problem)
+	ctx.JSON(http.StatusOK, GetProblemResponse{
+		Title:      problem.Title,
+		Body:       problem.Body,
+		Difficulty: problem.Difficulty,
+		Code:       problem.Code,
+	})
 }
 
-// FUNCTION: UPDATE PROBLEM
-// type UpdateProblemRequestBody struct {
-// 	Title      string `json:"title"`
-// 	Body       string `json:"body"`
-// 	Difficulty int    `json:"difficulty"`
+// // FUNCTION: GET PROBLEM
+
+// func (h handler) GetProblemHelpCode(ctx *gin.Context) {
+// 	id := ctx.Param("id")
+// 	var problem models.Problem
+
+// 	if result := h.DB.First(&problem, id); result.Error != nil {
+// 		ctx.AbortWithError(http.StatusNotFound, result.Error)
+// 		return
+// 	}
+
+// 	ctx.JSON(http.StatusOK, problem.HelpCode)
 // }
 
+// FUNCTION: UPDATE PROBLEM
 func (h handler) UpdateProblem(ctx *gin.Context) {
 	id := ctx.Param("id")
 	body := AddProblemRequestBody{}
@@ -104,6 +126,7 @@ func (h handler) UpdateProblem(ctx *gin.Context) {
 	problem.Body = body.Body
 	problem.Difficulty = body.Difficulty
 	problem.Code = body.Code
+	problem.HelpCode = body.HelpCode
 	//
 
 	h.DB.Save(&problem)
