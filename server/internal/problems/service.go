@@ -70,6 +70,7 @@ type GetProblemResponse struct {
 	Body       string `json:"body"`
 	Difficulty int    `json:"difficulty"`
 	Code       string `json:"code"`
+	ID         uint   `json:"ID"`
 }
 
 func (h handler) GetProblem(ctx *gin.Context) {
@@ -87,6 +88,7 @@ func (h handler) GetProblem(ctx *gin.Context) {
 		Body:       problem.Body,
 		Difficulty: problem.Difficulty,
 		Code:       problem.Code,
+		ID:         problem.ID,
 	})
 }
 

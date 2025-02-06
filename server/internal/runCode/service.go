@@ -10,16 +10,20 @@ import (
 
 // RUN CODE
 type RunCodeRequestBody struct {
-	ProblemID uint   `json:"problemId"`
+	ProblemID uint   `json:"problem_id"`
 	Code      string `json:"code"`
 	Type      int    `json"type"`
 	// Languages int `json:"languages"`
 }
 
 type RunCodeResponse struct {
-	Success  bool   `json:"success"`
-	LastTest int    `json:"last_test"`
-	Error    string `json:"error"`
+	Success     bool   `json:"success"`
+	Error       string `json:"error"`
+	TestOutput  string `json:"test_output"`
+	TestInput   string `json:"test_input"`
+	TestIndex   int    `json:"test_index"`
+	TestsLength int    `json:"tests_length"`
+	Output      string `json:"output"`
 }
 
 func (h handler) RunCode(ctx *gin.Context) {
@@ -48,21 +52,24 @@ func (h handler) RunCode(ctx *gin.Context) {
 		return
 	}
 	//
-	res, err := run.Run(problem.HelpCode, body.Code, tests)
+	err, index, out := run.Run(problem.HelpCode, body.Code, tests)
 
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, RunCodeResponse{
-			Success:  false,
-			LastTest: res,
-			Error:    err.Error(),
+		ctx.JSON(http.StatusOK, RunCodeResponse{
+			Success:     false,
+			Error:       err.Error(),
+			TestOutput:  tests[index].Output,
+			TestInput:   tests[index].Input,
+			TestIndex:   index,
+			TestsLength: len(tests),
+			Output:      out,
 		})
 		return
 	}
 
 	ctx.JSON(http.StatusOK, RunCodeResponse{
-		Success:  true,
-		LastTest: -1,
-		Error:    "",
+		Success: true,
+		Error:   "",
 	})
 }
 

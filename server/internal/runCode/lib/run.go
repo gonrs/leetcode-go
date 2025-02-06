@@ -17,12 +17,12 @@ import (
 //		}
 //		return testIndex, nil
 //	}
-func Run(StartCode string, Code string, Tests []models.Test) (int, error) {
+func Run(StartCode string, Code string, Tests []models.Test) (error, int, string) {
 	testIndex := 0
 	goFile := "./internal/runCode/lib/tmp/temp.go"
 	err := os.WriteFile(goFile, []byte(StartCode+"\n"+Code), 0644)
 	if err != nil {
-		return testIndex + 1, fmt.Errorf("error open file: %v", err)
+		return fmt.Errorf("error open file: %v", err), testIndex, ""
 	}
 	for testIndex < len(Tests) {
 		cmd := exec.Command("go", "run", goFile)
@@ -30,15 +30,15 @@ func Run(StartCode string, Code string, Tests []models.Test) (int, error) {
 		output, err := cmd.CombinedOutput()
 		if err != nil {
 			fmt.Println(output)
-			return testIndex + 1, fmt.Errorf("error running code: %v", err)
+			return fmt.Errorf("error running code: %v", err), testIndex, ""
 		}
 
 		actualOutput := strings.TrimSpace(string(output))
 		expectedOutput := strings.TrimSpace(Tests[testIndex].Output)
 		if actualOutput != expectedOutput {
-			return testIndex + 1, fmt.Errorf("test failed: expected %q, got %q", expectedOutput, actualOutput)
+			return fmt.Errorf("%v/%v test failed: expected %q, got %q", testIndex+1, len(Tests), expectedOutput, actualOutput), testIndex, actualOutput
 		}
 		testIndex += 1
 	}
-	return testIndex, nil
+	return nil, testIndex, ""
 }

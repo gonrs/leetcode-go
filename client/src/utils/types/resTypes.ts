@@ -15,3 +15,13 @@ export interface IGetProblems {
 export interface IGetProblem {
 	problem: IProblem
 }
+
+export interface ISendTest {
+	error: string
+	success: boolean
+	test_output: string
+	test_input: string
+	test_index: number
+	tests_length: number
+	output:string
+}

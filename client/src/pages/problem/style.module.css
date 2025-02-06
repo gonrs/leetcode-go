@@ -1,6 +1,52 @@
-.problemCon{
-  display: flex;
-  gap: 5px;
-  justify-content: space-between;
-  align-items: start;
+.problemCon {
+	display: flex;
+	gap: 5px;
+	justify-content: space-between;
+	align-items: start;
+}
+.problem {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.result {
+	display: flex;
+	width: 100%;
+	min-height: 75px;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 18px;
+	background-color: var(--main-black-light-color-2);
+}
+.resP {
+	padding: 10px;
+	background-color: var(--main-black-dark-color);
+	border-radius: 5px;
+	margin: 5px;
+}
+.result h1 {
+	font-size: 20px;
+}
+.resultSucces {
+	display: flex;
+	width: 100%;
+	height: 75px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: var(--main-sub-active-color);
+}
+.resultTestSucces {
+	display: flex;
+	width: 100%;
+	height: 75px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	background-color: var(--main-black-light-color-2);
+	padding: 10px;
 }
