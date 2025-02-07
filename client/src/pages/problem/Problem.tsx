@@ -6,28 +6,34 @@ import { IProblem } from '@type/problemTypes'
 import ProblemDescrioption from '@modules/problem/ProblemDescrioption'
 import ProblemCodeEditor from '@modules/problem/ProblemCodeEditor'
 import { ISendTest } from '@type/resTypes'
+import ErrorPage from '@pages/helps/ErrorPage'
 const Problem: FC = ({}) => {
 	const { id } = useParams()
 	const { getProblem } = useProblem()
 	const [problem, setProblem] = useState<IProblem>()
 	const [result, setResult] = useState<ISendTest | null>(null)
+	const [isSending, setIsSending] = useState(false)
 	const [sendType, setSendType] = useState<number>(0)
+	const [isProblemLoad, setIsProblemLoad] = useState(true)
 	async function getP() {
 		try {
+			console.log(true)
 			const data = await getProblem(Number(id))
 			if (data != null) {
 				setProblem(data)
 			} else {
 				console.log('ERROR')
+				setIsProblemLoad(false)
 			}
 		} catch (err) {
-			console.log(err)
+			setIsProblemLoad(false)
 		}
 	}
+
 	useEffect(() => {
 		getP()
 	}, [])
-	return (
+	return isProblemLoad ? (
 		<div className={s.problem}>
 			<div className={s.problemCon}>
 				<ProblemDescrioption problem={problem} />
@@ -37,9 +43,13 @@ const Problem: FC = ({}) => {
 						setResult(res)
 						setSendType(type)
 					}}
+					getIsSending={(res: boolean) => setIsSending(res)}
 				/>
 			</div>
-			{result &&
+			{isSending ? (
+				<div className={s.sending}>Sending.....</div>
+			) : (
+				result &&
 				(result.success ? (
 					sendType === 0 ? (
 						<div className={s.resultTestSucces}>
@@ -60,8 +70,11 @@ const Problem: FC = ({}) => {
 						<p className={s.resP}>Your output: {result.output}</p>
 						<p className={s.resP}>Error: {result.error}</p>
 					</div>
-				))}
+				))
+			)}
 		</div>
+	) : (
+		<ErrorPage />
 	)
 }
 export default Problem

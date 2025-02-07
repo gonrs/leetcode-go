@@ -9,8 +9,13 @@ import { ISendTest } from '@type/resTypes'
 interface IProblemCodeEditor {
 	problem: IProblem | undefined
 	getRes: (res: ISendTest, resType: number) => void
+	getIsSending: (res: boolean) => void
 }
-const ProblemCodeEditor: FC<IProblemCodeEditor> = ({ problem, getRes }) => {
+const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
+	problem,
+	getRes,
+	getIsSending,
+}) => {
 	if (!problem) {
 		return <div className={s.problemBody}>Loading....</div>
 	}
@@ -18,6 +23,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({ problem, getRes }) => {
 	const [code, setCode] = useState(problem.code)
 	async function send(type: number) {
 		setIsSending(true)
+		getIsSending(true)
 		try {
 			const data = await instance.post<ISendTest>(ServerURLS.sendTest, {
 				problem_id: problem?.ID,
@@ -28,6 +34,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({ problem, getRes }) => {
 		} catch (err) {
 			console.log(err)
 		}
+		getIsSending(false)
 		setIsSending(false)
 	}
 	return (

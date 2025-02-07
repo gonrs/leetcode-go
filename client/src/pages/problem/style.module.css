@@ -21,6 +21,17 @@
 	font-size: 18px;
 	background-color: var(--main-black-light-color-2);
 }
+.sending {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 75px;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 25px;
+	background-color: var(--main-black-light-color-2);
+}
 .resP {
 	padding: 10px;
 	background-color: var(--main-black-dark-color);

@@ -36,7 +36,8 @@ func Run(StartCode string, Code string, Tests []models.Test) (error, int, string
 		actualOutput := strings.TrimSpace(string(output))
 		expectedOutput := strings.TrimSpace(Tests[testIndex].Output)
 		if actualOutput != expectedOutput {
-			return fmt.Errorf("%v/%v test failed: expected %q, got %q", testIndex+1, len(Tests), expectedOutput, actualOutput), testIndex, actualOutput
+			// return fmt.Errorf("%v/%v test failed: expected %q, got %q", testIndex+1, len(Tests), expectedOutput, actualOutput), testIndex, actualOutput
+			return fmt.Errorf("expected %q, got %q", expectedOutput, actualOutput), testIndex, actualOutput
 		}
 		testIndex += 1
 	}
