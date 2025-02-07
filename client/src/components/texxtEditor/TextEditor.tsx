@@ -32,6 +32,10 @@ const TextEditor: FC<ITextEditorProps> = ({ startCode, onChange }) => {
 			}
 		}
 	}, [])
+	useEffect(() => {
+		setText(startCode)
+	}, [startCode])
+
 	const lines = text.split('\n')
 	return (
 		<div className={s.editorContainer}>

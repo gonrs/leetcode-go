@@ -6,7 +6,6 @@ export interface IProblem {
 	UpdatedAt: string
 	body: string
 	difficulty: number
-	code: string
 }
 export interface IProblemSub {
 	ID: number
@@ -15,4 +14,13 @@ export interface IProblemSub {
 	DeletedAt: string
 	UpdatedAt: string
 	difficulty: number
+}
+export interface ILanguage {
+	ID: number
+	CreatedAt: string
+	DeletedAt: string
+	problem_id: number
+	language: string
+	start_code: string
+	help_code: string
 }

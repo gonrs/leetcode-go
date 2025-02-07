@@ -18,6 +18,7 @@ func Init(url string) *gorm.DB {
 
 	db.AutoMigrate(&models.Problem{})
 	db.AutoMigrate(&models.Test{})
+	db.AutoMigrate(&models.LanguageCode{})
 
 	return db
 }

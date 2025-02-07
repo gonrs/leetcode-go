@@ -16,7 +16,7 @@ type Test struct {
 
 func main() {
 	startCode := "package main\n\nimport (\n\t\"fmt\" \n)\n\nfunc main() {\n\tvar (\n\t\ta int\n\t\tb int\n\t)\n\tfmt.Scanln(&a, &b)\n\tfmt.Println(Code(a, b))\n}\n"
-	code := "func Code(a int, b int) int{\n return a + b\n}\n"
+	code := "def Code(a, b):\n return a\n"
 	tests := []Test{
 		{Input: "10 1", Output: "11"},
 		{Input: "11 11", Output: "22"},

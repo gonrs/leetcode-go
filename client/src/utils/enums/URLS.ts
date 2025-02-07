@@ -6,5 +6,6 @@ export enum ServerURLS {
 	checksServer = '/',
 	getProblem = '/problems/',
 	getProblems = '/problems',
-	sendTest = '/test/run'
+	sendTest = '/test/run',
+	getLanguages = "/languagecode/"
 }

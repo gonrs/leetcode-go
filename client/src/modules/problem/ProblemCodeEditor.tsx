@@ -1,8 +1,8 @@
-import { FC, useState } from 'react'
+import { FC, useEffect, useState } from 'react'
 import s from './style.module.css'
 import TextEditor from '@components/texxtEditor/TextEditor'
 import { Button } from '@ui'
-import { IProblem } from '@type/problemTypes'
+import { ILanguage, IProblem } from '@type/problemTypes'
 import { instance } from '@api/axios.api'
 import { ServerURLS } from '@enums/URLS'
 import { ISendTest } from '@type/resTypes'
@@ -16,27 +16,45 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 	getRes,
 	getIsSending,
 }) => {
-	if (!problem) {
-		return <div className={s.problemBody}>Loading....</div>
-	}
+	// if (!problem) {
+	// 	return <div className={s.problemBody}>Loading....</div>
+	// }
 	const [isSending, setIsSending] = useState(false)
-	const [code, setCode] = useState(problem.code)
+	const [languages, setLanguages] = useState<ILanguage[]>()
 	const [currentLanguage, setCurrentLanguage] = useState(0)
-	async function send(type: number) {
-		setIsSending(true)
-		getIsSending(true)
-		try {
-			const data = await instance.post<ISendTest>(ServerURLS.sendTest, {
-				problem_id: problem?.ID,
-				code: code,
-				type: type,
-			})
-			getRes(data.data, type)
-		} catch (err) {
-			console.log(err)
+	const [code, setCode] = useState('// some code')
+	async function fetchLanguages() {
+		if (problem) {
+			try {
+				const data = await instance.get<ILanguage[]>(
+					ServerURLS.getLanguages + problem?.ID
+				)
+				setLanguages(data.data)
+				setCode(data.data[currentLanguage].start_code)
+			} catch (err) {
+				console.log(err)
+			}
 		}
-		getIsSending(false)
-		setIsSending(false)
+	}
+
+	async function send(type: number) {
+		if (languages) {
+			setIsSending(true)
+			getIsSending(true)
+			try {
+				const data = await instance.post<ISendTest>(ServerURLS.sendTest, {
+					problem_id: problem?.ID,
+					code: code,
+					type: type,
+					language_id: languages[currentLanguage].ID,
+				})
+				getRes(data.data, type)
+			} catch (err) {
+				console.log(err)
+			}
+			getIsSending(false)
+			setIsSending(false)
+		}
 	}
 	function changeLanguage() {
 		if (currentLanguage === 0) {
@@ -45,24 +63,41 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 			setCurrentLanguage(0)
 		}
 	}
-	return (
+	useEffect(() => {
+		fetchLanguages()
+	}, [problem])
+
+	return problem ? (
 		<div className={s.problemCodeEditor}>
 			<TextEditor
 				onChange={(code: string) => setCode(code)}
-				startCode={problem.code}
+				startCode={
+					languages ? languages[currentLanguage].start_code : '// some code'
+				}
 			/>
 			<div className={s.problemSend}>
-				<Button disabled={isSending} onClick={() => send(0)}>
-					Send Test
-				</Button>
-				<p>
-					Language: <Button onClick={changeLanguage}>python</Button>
-				</p>
-				<Button disabled={isSending} onClick={() => send(1)}>
-					Submite
-				</Button>
+				{languages ? (
+					<>
+						<Button disabled={isSending} onClick={() => send(0)}>
+							Send Test
+						</Button>
+						<p>
+							Language:{' '}
+							<Button onClick={changeLanguage}>
+								{languages[currentLanguage].language}
+							</Button>
+						</p>
+						<Button disabled={isSending} onClick={() => send(1)}>
+							Submite
+						</Button>
+					</>
+				) : (
+					<div className={s.problemBody}>Loading...</div>
+				)}
 			</div>
 		</div>
+	) : (
+		<div className={s.problemBody}>Loading....</div>
 	)
 }
 export default ProblemCodeEditor

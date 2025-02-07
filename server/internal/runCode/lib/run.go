@@ -17,29 +17,41 @@ import (
 //		}
 //		return testIndex, nil
 //	}
-func Run(StartCode string, Code string, Tests []models.Test) (error, int, string) {
+func Run(LanguageCode string, StartCode string, Code string, Tests []models.Test) (int, string, error) {
 	testIndex := 0
-	goFile := "./internal/runCode/lib/tmp/temp.go"
-	err := os.WriteFile(goFile, []byte(StartCode+"\n"+Code), 0644)
+	file := "./internal/runCode/lib/tmp/temp.go"
+	if LanguageCode == "py" {
+		file = "./internal/runCode/lib/tmp/temp.py"
+	}
+	newCode := StartCode + "\n" + Code
+	if LanguageCode == "py" {
+		newCode = Code + "\n" + StartCode
+	}
+	err := os.WriteFile(file, []byte(newCode), 0644)
 	if err != nil {
-		return fmt.Errorf("error open file: %v", err), testIndex, ""
+		return testIndex, "", fmt.Errorf("error open file: %v", err)
 	}
 	for testIndex < len(Tests) {
-		cmd := exec.Command("go", "run", goFile)
+		var cmd *exec.Cmd
+		if LanguageCode == "go" {
+			cmd = exec.Command("go", "run", file)
+		} else if LanguageCode == "py" {
+			cmd = exec.Command("python", file)
+		}
 		cmd.Stdin = strings.NewReader(Tests[testIndex].Input)
 		output, err := cmd.CombinedOutput()
 		if err != nil {
-			fmt.Println(output)
-			return fmt.Errorf("error running code: %v", err), testIndex, ""
+			// fmt.Println(output)
+			return testIndex, "", fmt.Errorf("error running code: %v", err)
 		}
 
 		actualOutput := strings.TrimSpace(string(output))
 		expectedOutput := strings.TrimSpace(Tests[testIndex].Output)
 		if actualOutput != expectedOutput {
 			// return fmt.Errorf("%v/%v test failed: expected %q, got %q", testIndex+1, len(Tests), expectedOutput, actualOutput), testIndex, actualOutput
-			return fmt.Errorf("expected %q, got %q", expectedOutput, actualOutput), testIndex, actualOutput
+			return testIndex, actualOutput, fmt.Errorf("expected %q, got %q", expectedOutput, actualOutput)
 		}
 		testIndex += 1
 	}
-	return nil, testIndex, ""
+	return testIndex, "", nil
 }

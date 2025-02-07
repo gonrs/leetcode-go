@@ -10,9 +10,10 @@ import (
 
 // RUN CODE
 type RunCodeRequestBody struct {
-	ProblemID uint   `json:"problem_id"`
-	Code      string `json:"code"`
-	Type      int    `json"type"`
+	ProblemID  uint   `json:"problem_id"`
+	Code       string `json:"code"`
+	Type       int    `json"type"`
+	LanguageID uint   `json:"language_id"`
 	// Languages int `json:"languages"`
 }
 
@@ -45,14 +46,14 @@ func (h handler) RunCode(ctx *gin.Context) {
 		return
 	}
 	//
-	var problem models.Problem
+	var language models.LanguageCode
 
-	if result := h.DB.First(&problem, body.ProblemID); result.Error != nil {
+	if result := h.DB.First(&language, body.LanguageID); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
 		return
 	}
 	//
-	err, index, out := run.Run(problem.HelpCode, body.Code, tests)
+	index, out, err := run.Run(language.Language, language.HelpCode, body.Code, tests)
 
 	if err != nil {
 		ctx.JSON(http.StatusOK, RunCodeResponse{
