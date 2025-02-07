@@ -66,7 +66,7 @@ const Problem: FC = ({}) => {
 							Error in {result.test_index + 1}/{result.tests_length} test:
 						</h1>
 						<p className={s.resP}>Input: {result.test_input}</p>
-						<p className={s.resP}>Output: {result.test_output}</p>
+						<p className={s.resP}>Expected Output: {result.test_output}</p>
 						<p className={s.resP}>Your output: {result.output}</p>
 						<p className={s.resP}>Error: {result.error}</p>
 					</div>

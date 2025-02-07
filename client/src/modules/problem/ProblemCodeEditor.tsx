@@ -21,6 +21,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 	}
 	const [isSending, setIsSending] = useState(false)
 	const [code, setCode] = useState(problem.code)
+	const [currentLanguage, setCurrentLanguage] = useState(0)
 	async function send(type: number) {
 		setIsSending(true)
 		getIsSending(true)
@@ -37,6 +38,13 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 		getIsSending(false)
 		setIsSending(false)
 	}
+	function changeLanguage() {
+		if (currentLanguage === 0) {
+			setCurrentLanguage(1)
+		} else {
+			setCurrentLanguage(0)
+		}
+	}
 	return (
 		<div className={s.problemCodeEditor}>
 			<TextEditor
@@ -48,7 +56,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 					Send Test
 				</Button>
 				<p>
-					Language: <span>python</span>
+					Language: <Button onClick={changeLanguage}>python</Button>
 				</p>
 				<Button disabled={isSending} onClick={() => send(1)}>
 					Submite

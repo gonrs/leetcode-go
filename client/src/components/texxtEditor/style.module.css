@@ -4,6 +4,8 @@
 	border: 1px solid var(--main-black-light-color);
 	background-color: var(--main-black-dark-color);
 	overflow: hidden;
+	height: 45vh;
+	max-height: 450px;
 }
 .lineNumbers {
 	background-color: var(--main-black-light-color-2);
@@ -13,6 +15,11 @@
 	color: #fff;
 	border-radius: 7px 0 0 7px;
 	user-select: none;
+	overflow-y: auto;
+	height: 100%;
+}
+.lineNumbers::-webkit-scrollbar {
+	width: 0;
 }
 .lineNumber {
 	padding: 0;
@@ -26,9 +33,8 @@
 	outline: none;
 	background-color: var(--main-black-dark-color);
 	color: #fff;
-	height: 45vh;
 	border-radius: 0 7px 7px 0;
-	max-height: 350px;
-	overflow-x: auto;
 	white-space: pre;
+	overflow-y: auto;
+	height: 100%;
 }
