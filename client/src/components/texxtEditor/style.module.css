@@ -4,8 +4,8 @@
 	border: 1px solid var(--main-black-light-color);
 	background-color: var(--main-black-dark-color);
 	overflow: hidden;
-	height: 45vh;
-	max-height: 450px;
+	height: 75vh;
+	/* max-height: 500px; */
 }
 .lineNumbers {
 	background-color: var(--main-black-light-color-2);
