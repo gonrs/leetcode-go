@@ -1,18 +1,24 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"log"
+	"os"
+	"strings"
 )
 
 func main() {
-	var (
-		a int
-		b int
-	)
-	fmt.Scanln(&a, &b)
-	fmt.Println(Code(a, b))
+	strings.Clone("")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	err := scanner.Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(Code(scanner.Text()))
 }
-
-func Code(a int, b int) int {
-	return a + b
+// use can use fmt, strings package
+func Code(s string) string {
+	return s
 }

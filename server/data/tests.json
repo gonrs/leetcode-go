@@ -1,0 +1,146 @@
+
+[
+  {
+    "input":"10 20",
+    "output":"500",
+    "problem_id":1,
+    "type":0
+  },
+  {
+    "input":"3 4",
+    "output":"25",
+    "problem_id":1,
+    "type":0
+  },
+  {
+    "input":"30 4",
+    "output":"916",
+    "problem_id":1,
+    "type":1
+  },
+  {
+    "input":"11 4",
+    "output":"137",
+    "problem_id":1,
+    "type":1
+  },
+  {
+    "input":"24 3",
+    "output":"585",
+    "problem_id":1,
+    "type":1
+  },
+  {
+    "input":"7 4",
+    "output":"65",
+    "problem_id":1,
+    "type":1
+  },
+  {
+    "input":"1488 9",
+    "output":"2214225",
+    "problem_id":1,
+    "type":1
+  },
+
+
+
+  {
+    "input":"abc pqr",
+    "output":"apbqcr",
+    "problem_id":2,
+    "type":0
+  },
+  {
+    "input":"ab pqrs",
+    "output":"apbqrs",
+    "problem_id":2,
+    "type":0
+  },
+  {
+    "input":"abcd pq",
+    "output":"apbqcd",
+    "problem_id":2,
+    "type":0
+  },
+
+  {
+    "input":"qwe qwe",
+    "output":"qqwwee",
+    "problem_id":2,
+    "type":1
+  },
+  {
+    "input":"asd qwe",
+    "output":"aqswde",
+    "problem_id":2,
+    "type":1
+  },
+  {
+    "input":"asd q",
+    "output":"aqsd",
+    "problem_id":2,
+    "type":1
+  },
+  {
+    "input":"asdasd asd",
+    "output":"aassddasd",
+    "problem_id":2,
+    "type":1
+  },
+  {
+    "input":"zx zzzzzzzzz",
+    "output":"zzxzzzzzzzz",
+    "problem_id":2,
+    "type":1
+  },
+  {
+    "input":"zzz aa",
+    "output":"zazaz",
+    "problem_id":2,
+    "type":1
+  },
+
+
+
+
+
+  {
+    "input":"the sky is blue",
+    "output":"blue is sky the",
+    "problem_id":3,
+    "type":0
+  },
+  {
+    "input":"  hello world  ",
+    "output":"world hello",
+    "problem_id":3,
+    "type":0
+  },
+  {
+    "input":"a good   example",
+    "output":"example good a",
+    "problem_id":3,
+    "type":0
+  },
+
+
+  {
+    "input":"the sky is bluea a",
+    "output":"a bluea is sky the",
+    "problem_id":3,
+    "type":1
+  },
+  {
+    "input":"  hello world  qwe qwe",
+    "output":"qwe qwe world hello",
+    "problem_id":3,
+    "type":1
+  },
+  {
+    "input":"asd a good   example asd ",
+    "output":"asd example good a asd",
+    "problem_id":3,
+    "type":1
+  }
+]
