@@ -7,6 +7,7 @@ import ProblemDescrioption from '@modules/problem/ProblemDescrioption'
 import ProblemCodeEditor from '@modules/problem/ProblemCodeEditor'
 import { ISendTest } from '@type/resTypes'
 import ErrorPage from '@pages/helps/ErrorPage'
+import MarkdownRenderer from '@components/markDown/MarkDownReader'
 const Problem: FC = ({}) => {
 	const { id } = useParams()
 	const { getProblem } = useProblem()
@@ -15,6 +16,7 @@ const Problem: FC = ({}) => {
 	const [isSending, setIsSending] = useState(false)
 	const [sendType, setSendType] = useState<number>(0)
 	const [isProblemLoad, setIsProblemLoad] = useState(true)
+	const [isSolution, setIsSolution] = useState(false)
 	async function getP() {
 		try {
 			console.log(true)
@@ -44,6 +46,7 @@ const Problem: FC = ({}) => {
 						setSendType(type)
 					}}
 					getIsSending={(res: boolean) => setIsSending(res)}
+					setSolution={(res: boolean) => setIsSolution(res)}
 				/>
 			</div>
 			{isSending ? (
@@ -71,6 +74,12 @@ const Problem: FC = ({}) => {
 						<p className={s.resP}>Error: {result.error}</p>
 					</div>
 				))
+			)}
+			{isSolution && problem && (
+				<div className={s.solution}>
+					<h2>Solution:</h2>
+					<MarkdownRenderer markdown={problem?.solution} />
+				</div>
 			)}
 		</div>
 	) : (

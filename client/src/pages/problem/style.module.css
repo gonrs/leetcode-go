@@ -61,3 +61,10 @@
 	background-color: var(--main-black-light-color-2);
 	padding: 10px;
 }
+.solution {
+	width: 100%;
+	border-radius: 5px;
+	background-color: var(--main-black-light-color-2);
+	margin-bottom: 10px;
+	padding: 10px;
+}

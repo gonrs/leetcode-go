@@ -2,7 +2,7 @@
   {
     "problem_id":1,
     "language":"go",
-    "start_code":"func Code(a int, b int) int{\n\n}",
+    "start_code":"// use can use fmt package\nfunc Code(a int, b int) int{\n\n}",
     "help_code":"package main\n\nimport (\n\t\"fmt\" \n \t\"math\" \n)\n\nfunc main() {\n\tmath.Abs(1)\n\tvar (\n\t\ta int\n\t\tb int\n\t)\n\tfmt.Scanln(&a, &b)\n\tfmt.Println(Code(a, b))\n}\n"
   },
   {
@@ -17,7 +17,7 @@
   {
     "problem_id":2,
     "language":"go",
-    "start_code":"func Code(a string, b string) string{\n return \"\"\n}",
+    "start_code":"// use can use fmt package\nfunc Code(a string, b string) string{\n return \"\"\n}",
     "help_code":"package main\n\nimport (\n\t\"fmt\" \n \t\"math\" \n)\n\nfunc main() {\n\tmath.Abs(1)\n\tvar (\n\t\ta string\n\t\tb string\n\t)\n\tfmt.Scanln(&a, &b)\n\tfmt.Println(Code(a, b))\n}\n"
   },
   {

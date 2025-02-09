@@ -6,15 +6,18 @@ import { ILanguage, IProblem } from '@type/problemTypes'
 import { instance } from '@api/axios.api'
 import { ServerURLS } from '@enums/URLS'
 import { ISendTest } from '@type/resTypes'
+import { Link } from 'react-router'
 interface IProblemCodeEditor {
 	problem: IProblem | undefined
 	getRes: (res: ISendTest, resType: number) => void
 	getIsSending: (res: boolean) => void
+	setSolution: (res: boolean) => void
 }
 const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 	problem,
 	getRes,
 	getIsSending,
+	setSolution,
 }) => {
 	// if (!problem) {
 	// 	return <div className={s.problemBody}>Loading....</div>
@@ -23,6 +26,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 	const [languages, setLanguages] = useState<ILanguage[]>()
 	const [currentLanguage, setCurrentLanguage] = useState(0)
 	const [code, setCode] = useState('// some code')
+	const [isSolution, setIsSolution] = useState(false)
 	async function fetchLanguages() {
 		if (problem) {
 			try {
@@ -57,10 +61,10 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 		}
 	}
 	function changeLanguage() {
-		if (currentLanguage === 0) {
-			setCurrentLanguage(1)
-		} else {
+		if (currentLanguage === (languages ? languages.length - 1 : 0)) {
 			setCurrentLanguage(0)
+		} else {
+			setCurrentLanguage(currentLanguage + 1)
 		}
 	}
 	useEffect(() => {
@@ -87,6 +91,14 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 								{languages[currentLanguage].language}
 							</Button>
 						</p>
+						<Button
+							onClick={() => {
+								setIsSolution(!isSolution)
+								setSolution(!isSolution)
+							}}
+						>
+							{isSolution ? 'Close Solution' : 'View Solution'}
+						</Button>
 						<Button disabled={isSending} onClick={() => send(1)}>
 							Submite
 						</Button>
@@ -95,6 +107,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 					<div className={s.problemBody}>Loading...</div>
 				)}
 			</div>
+			
 		</div>
 	) : (
 		<div className={s.problemBody}>Loading....</div>

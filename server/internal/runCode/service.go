@@ -59,8 +59,8 @@ func (h handler) RunCode(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, RunCodeResponse{
 			Success:     false,
 			Error:       err.Error(),
-			TestOutput:  tests[index].Output,
-			TestInput:   tests[index].Input,
+			TestOutput:  tests[index].OutputForUser,
+			TestInput:   tests[index].InputForUser,
 			TestIndex:   index,
 			TestsLength: len(tests),
 			Output:      out,
@@ -76,10 +76,12 @@ func (h handler) RunCode(ctx *gin.Context) {
 
 // ADD TESTS
 type AddTestsRequestBody struct {
-	Input     string `json:"input"`
-	Output    string `json"output"`
-	ProblemID uint   `json:"problem_id"`
-	Type      int    `json"type"`
+	Input         string `json:"input"`
+	Output        string `json"output"`
+	InputForUser  string `json:"input_for_user"`
+	OutputForUser string `json:"output_for_user"`
+	ProblemID     uint   `json:"problem_id"`
+	Type          int    `json"type"`
 }
 
 func (h handler) AddTests(ctx *gin.Context) {
@@ -92,10 +94,12 @@ func (h handler) AddTests(ctx *gin.Context) {
 	var tests []models.Test
 	for _, req := range body {
 		tests = append(tests, models.Test{
-			Input:     req.Input,
-			Output:    req.Output,
-			ProblemID: req.ProblemID,
-			Type:      req.Type,
+			Input:         req.Input,
+			Output:        req.Output,
+			InputForUser:  req.InputForUser,
+			OutputForUser: req.OutputForUser,
+			ProblemID:     req.ProblemID,
+			Type:          req.Type,
 		})
 	}
 

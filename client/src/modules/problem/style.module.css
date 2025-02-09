@@ -11,7 +11,7 @@
 	gap: 10px;
 }
 .problemBodyDesc {
-	max-height: calc(95vh - 175px);
+	max-height: calc(88vh - 175px);
 	max-height: auto;
 	overflow: auto;
 }
@@ -75,6 +75,8 @@
 	background-color: var(--main-black-light-color-2);
 	padding: 6px;
 	border-radius: 8px;
+	flex-wrap: wrap;
+	gap: 20px;
 }
 .problemSendButtons{
 	display: flex;

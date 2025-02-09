@@ -11,9 +11,10 @@ import (
 // FUNCTION: ADD PROBLEM
 
 type AddProblemRequestBody struct {
-	Title      string                `json:"title"`
-	Body       string                `json:"body"`
-	Difficulty int                   `json:"difficulty"`
+	Title      string `json:"title"`
+	Body       string `json:"body"`
+	Difficulty int    `json:"difficulty"`
+	Solution   string `json:"solution"`
 }
 
 func (h handler) AddProblem(ctx *gin.Context) {
@@ -28,6 +29,7 @@ func (h handler) AddProblem(ctx *gin.Context) {
 	problem.Title = body.Title
 	problem.Body = body.Body
 	problem.Difficulty = body.Difficulty
+	problem.Solution = body.Solution
 	//
 	if result := h.DB.Create(&problem); result.Error != nil {
 		ctx.AbortWithError(http.StatusNotFound, result.Error)
