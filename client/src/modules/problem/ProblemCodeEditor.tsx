@@ -100,7 +100,7 @@ const ProblemCodeEditor: FC<IProblemCodeEditor> = ({
 							{isSolution ? 'Close Solution' : 'View Solution'}
 						</Button>
 						<Button disabled={isSending} onClick={() => send(1)}>
-							Submite
+							Submit
 						</Button>
 					</>
 				) : (
