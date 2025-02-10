@@ -16,4 +16,8 @@ export default defineConfig({
 		},
 		extensions: ['.ts', '.tsx', '.json'],
 	},
+	server: {
+    host: true,
+		allowedHosts:true
+  },
 })

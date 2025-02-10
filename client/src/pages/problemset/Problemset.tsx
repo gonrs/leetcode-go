@@ -6,7 +6,9 @@ import SubProblem from '@components/subProblem/SubProblem'
 import { Button } from '@ui'
 const Problemset: FC = ({}) => {
 	const { getProblems } = useProblem()
-	const [problemsPageLen, setProblemsPageLen] = useState(7)
+	// const [problemsPageLen, setProblemsPageLen] = useState(7)
+	// setProblemsPageLen(7)
+	const problemsPageLen = 7
 	const [problemCoord, setProblemCoord] = useState({
 		from: 0,
 		to: problemsPageLen,
@@ -42,7 +44,7 @@ const Problemset: FC = ({}) => {
 	}
 	useEffect(() => {
 		getStartProblems(problemCoord.from, problemCoord.to)
-	}, [])
+	}, [problemCoord.from, problemCoord.to])
 	return (
 		<div>
 			<div className={s.problems}>

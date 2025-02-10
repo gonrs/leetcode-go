@@ -24,7 +24,7 @@ func main() {
 	dbHandler := db.Init(dbUrl)
 	//
 	config := cors.Config{
-		AllowOrigins:     []string{"http://localhost:5173"},                                                  // Разрешенные источники
+		AllowOrigins:     []string{"http://localhost:5173", "https://pt-pt-client.onrender.com"},             // Разрешенные источники
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},                                           // Разрешенные методы
 		AllowHeaders:     []string{"Access-Control-Allow-Origin", "Origin", "Content-Type", "Authorization"}, // Разрешенные заголовки
 		ExposeHeaders:    []string{"Content-Length"},

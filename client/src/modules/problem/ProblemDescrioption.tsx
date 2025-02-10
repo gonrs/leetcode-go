@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import s from './style.module.css'
 import { IProblem } from '@type/problemTypes'
 import MarkdownRenderer from '@components/markDown/MarkDownReader'

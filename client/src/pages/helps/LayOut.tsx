@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import  { FC } from 'react'
 import s from './style.module.css'
 import Header from '@modules/header/Header'
 import { Outlet } from 'react-router'

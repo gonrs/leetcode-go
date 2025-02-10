@@ -6,7 +6,6 @@ import { ILanguage, IProblem } from '@type/problemTypes'
 import { instance } from '@api/axios.api'
 import { ServerURLS } from '@enums/URLS'
 import { ISendTest } from '@type/resTypes'
-import { Link } from 'react-router'
 interface IProblemCodeEditor {
 	problem: IProblem | undefined
 	getRes: (res: ISendTest, resType: number) => void
