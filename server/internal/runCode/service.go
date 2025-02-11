@@ -109,3 +109,48 @@ func (h handler) AddTests(ctx *gin.Context) {
 	}
 	ctx.JSON(http.StatusOK, gin.H{"message": "Tests added successfully", "tests": tests})
 }
+
+// GET TESTS
+
+func (h handler) GetTests(ctx *gin.Context) {
+	var tests []models.Test
+
+	if result := h.DB.Find(&tests); result.Error != nil {
+		ctx.AbortWithError(http.StatusNotFound, result.Error)
+		return
+	}
+
+	ctx.JSON(http.StatusOK, &tests)
+}
+
+// DELETE TESTS
+
+func (h handler) DeleteTests(ctx *gin.Context) {
+	var ids []int
+	if err := ctx.BindJSON(&ids); err != nil {
+		ctx.AbortWithError(http.StatusBadRequest, err)
+		return
+	}
+	if len(ids) == 0 {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"error": "No IDs provided"})
+		return
+	}
+
+	var tests []models.Test
+	if err := h.DB.Where("id IN (?)", ids).Find(&tests).Error; err != nil {
+		ctx.AbortWithStatusJSON(http.StatusNotFound, gin.H{"error": "Some tests not found"})
+		return
+	}
+
+	if len(tests) != len(ids) {
+		ctx.AbortWithStatusJSON(http.StatusNotFound, gin.H{"error": "Some tests not found"})
+		return
+	}
+
+	if err := h.DB.Delete(&tests).Error; err != nil {
+		ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete tests"})
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{"message": "Test deleted successfully"})
+}

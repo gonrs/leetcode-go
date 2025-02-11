@@ -1,145 +1,227 @@
 [
   {
-    "input":"10 20",
-    "output":"500",
-    "problem_id":1,
-    "type":0
+    "input": "10 20",
+    "output": "500",
+    "problem_id": 1,
+    "type": 0,
+    "input_for_user": "10 20",
+    "output_for_user": "500"
   },
   {
-    "input":"3 4",
-    "output":"25",
-    "problem_id":1,
-    "type":0
+    "input": "3 4",
+    "output": "25",
+    "problem_id": 1,
+    "type": 0,
+    "input_for_user": "3 4",
+    "output_for_user": "25"
   },
   {
-    "input":"30 4",
-    "output":"916",
-    "problem_id":1,
-    "type":1
+    "input": "30 4",
+    "output": "916",
+    "problem_id": 1,
+    "type": 1,
+    "input_for_user": "30 4",
+    "output_for_user": "916"
   },
   {
-    "input":"11 4",
-    "output":"137",
-    "problem_id":1,
-    "type":1
+    "input": "11 4",
+    "output": "137",
+    "problem_id": 1,
+    "type": 1,
+    "input_for_user": "11 4",
+    "output_for_user": "137"
   },
   {
-    "input":"24 3",
-    "output":"585",
-    "problem_id":1,
-    "type":1
+    "input": "24 3",
+    "output": "585",
+    "problem_id": 1,
+    "type": 1,
+    "input_for_user": "24 3",
+    "output_for_user": "585"
   },
   {
-    "input":"7 4",
-    "output":"65",
-    "problem_id":1,
-    "type":1
+    "input": "7 4",
+    "output": "65",
+    "problem_id": 1,
+    "type": 1,
+    "input_for_user": "7 4",
+    "output_for_user": "65"
   },
   {
-    "input":"1488 9",
-    "output":"2214225",
-    "problem_id":1,
-    "type":1
+    "input": "1488 9",
+    "output": "2214225",
+    "problem_id": 1,
+    "type": 1,
+    "input_for_user": "1488 9",
+    "output_for_user": "2214225"
+  },
+  {
+    "input": "abc pqr",
+    "output": "apbqcr",
+    "problem_id": 2,
+    "type": 0,
+    "input_for_user": "abc pqr",
+    "output_for_user": "apbqcr"
+  },
+  {
+    "input": "ab pqrs",
+    "output": "apbqrs",
+    "problem_id": 2,
+    "type": 0,
+    "input_for_user": "ab pqrs",
+    "output_for_user": "apbqrs"
+  },
+  {
+    "input": "abcd pq",
+    "output": "apbqcd",
+    "problem_id": 2,
+    "type": 0,
+    "input_for_user": "abcd pq",
+    "output_for_user": "apbqcd"
+  },
+  {
+    "input": "qwe qwe",
+    "output": "qqwwee",
+    "problem_id": 2,
+    "type": 1,
+    "input_for_user": "qwe qwe",
+    "output_for_user": "qqwwee"
+  },
+  {
+    "input": "asd qwe",
+    "output": "aqswde",
+    "problem_id": 2,
+    "type": 1,
+    "input_for_user": "asd qwe",
+    "output_for_user": "aqswde"
+  },
+  {
+    "input": "asd q",
+    "output": "aqsd",
+    "problem_id": 2,
+    "type": 1,
+    "input_for_user": "asd q",
+    "output_for_user": "aqsd"
+  },
+  {
+    "input": "asdasd asd",
+    "output": "aassddasd",
+    "problem_id": 2,
+    "type": 1,
+    "input_for_user": "asdasd asd",
+    "output_for_user": "aassddasd"
+  },
+  {
+    "input": "zx zzzzzzzzz",
+    "output": "zzxzzzzzzzz",
+    "problem_id": 2,
+    "type": 1,
+    "input_for_user": "zx zzzzzzzzz",
+    "output_for_user": "zzxzzzzzzzz"
+  },
+  {
+    "input": "zzz aa",
+    "output": "zazaz",
+    "problem_id": 2,
+    "type": 1,
+    "input_for_user": "zzz aa",
+    "output_for_user": "zazaz"
+  },
+  {
+    "input": "the sky is blue",
+    "output": "blue is sky the",
+    "problem_id": 3,
+    "type": 0,
+    "input_for_user": "the sky is blue",
+    "output_for_user": "blue is sky the"
+  },
+  {
+    "input": "  hello world  ",
+    "output": "world hello",
+    "problem_id": 3,
+    "type": 0,
+    "input_for_user": "  hello world  ",
+    "output_for_user": "world hello"
+  },
+  {
+    "input": "a good   example",
+    "output": "example good a",
+    "problem_id": 3,
+    "type": 0,
+    "input_for_user": "a good   example",
+    "output_for_user": "example good a"
+  },
+  {
+    "input": "the sky is bluea a",
+    "output": "a bluea is sky the",
+    "problem_id": 3,
+    "type": 1,
+    "input_for_user": "the sky is bluea a",
+    "output_for_user": "a bluea is sky the"
+  },
+  {
+    "input": "  hello world  qwe qwe",
+    "output": "qwe qwe world hello",
+    "problem_id": 3,
+    "type": 1,
+    "input_for_user": "  hello world  qwe qwe",
+    "output_for_user": "qwe qwe world hello"
+  },
+  {
+    "input": "asd a good   example asd ",
+    "output": "asd example good a asd",
+    "problem_id": 3,
+    "type": 1,
+    "input_for_user": "asd a good   example asd ",
+    "output_for_user": "asd example good a asd"
   },
 
-
-
   {
-    "input":"abc pqr",
-    "output":"apbqcr",
-    "problem_id":2,
-    "type":0
+    "input": "aabbccc",
+    "output": "6",
+    "problem_id": 4,
+    "type": 0,
+    "input_for_user": "aabbccc",
+    "output_for_user": "6"
   },
   {
-    "input":"ab pqrs",
-    "output":"apbqrs",
-    "problem_id":2,
-    "type":0
+    "input": "a",
+    "output": "1",
+    "problem_id": 4,
+    "type": 0,
+    "input_for_user": "a",
+    "output_for_user": "1"
   },
   {
-    "input":"abcd pq",
-    "output":"apbqcd",
-    "problem_id":2,
-    "type":0
-  },
-
-  {
-    "input":"qwe qwe",
-    "output":"qqwwee",
-    "problem_id":2,
-    "type":1
+    "input": "abbbbbbbbbbbb",
+    "output": "4",
+    "problem_id": 4,
+    "type": 0,
+    "input_for_user": "abbbbbbbbbbbb",
+    "output_for_user": "4"
   },
   {
-    "input":"asd qwe",
-    "output":"aqswde",
-    "problem_id":2,
-    "type":1
+    "input": "aabbccc",
+    "output": "6",
+    "problem_id": 4,
+    "type": 1,
+    "input_for_user": "aabbccc",
+    "output_for_user": "6"
   },
   {
-    "input":"asd q",
-    "output":"aqsd",
-    "problem_id":2,
-    "type":1
+    "input": "a",
+    "output": "1",
+    "problem_id": 4,
+    "type": 1,
+    "input_for_user": "a",
+    "output_for_user": "1"
   },
   {
-    "input":"asdasd asd",
-    "output":"aassddasd",
-    "problem_id":2,
-    "type":1
-  },
-  {
-    "input":"zx zzzzzzzzz",
-    "output":"zzxzzzzzzzz",
-    "problem_id":2,
-    "type":1
-  },
-  {
-    "input":"zzz aa",
-    "output":"zazaz",
-    "problem_id":2,
-    "type":1
-  },
-
-
-
-
-
-  {
-    "input":"the sky is blue",
-    "output":"blue is sky the",
-    "problem_id":3,
-    "type":0
-  },
-  {
-    "input":"  hello world  ",
-    "output":"world hello",
-    "problem_id":3,
-    "type":0
-  },
-  {
-    "input":"a good   example",
-    "output":"example good a",
-    "problem_id":3,
-    "type":0
-  },
-
-
-  {
-    "input":"the sky is bluea a",
-    "output":"a bluea is sky the",
-    "problem_id":3,
-    "type":1
-  },
-  {
-    "input":"  hello world  qwe qwe",
-    "output":"qwe qwe world hello",
-    "problem_id":3,
-    "type":1
-  },
-  {
-    "input":"asd a good   example asd ",
-    "output":"asd example good a asd",
-    "problem_id":3,
-    "type":1
+    "input": "abbbbbbbbbbbb",
+    "output": "4",
+    "problem_id": 4,
+    "type": 1,
+    "input_for_user": "abbbbbbbbbbbb",
+    "output_for_user": "4"
   }
 ]

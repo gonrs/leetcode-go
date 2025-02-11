@@ -40,5 +40,21 @@
     "language":"py",
     "start_code":"def Code(s):\n  ",
     "help_code":"s = map(int, input())\nprint(Code(s))"
+  },
+
+
+
+  {
+    "problem_id":4,
+    "language":"go",
+    "start_code":"// use can use fmt package\nfunc Code(chars []byte) int{\n return 0\n}",
+    "help_code": "package main\n\nimport (\n\t\"bufio\"\n\t\"fmt\"\n\t\"log\"\n\t\"os\"\n)\n\nfunc main() {\n\tscanner := bufio.NewScanner(os.Stdin)\n\tscanner.Scan()\n\terr := scanner.Err()\n\tif err != nil {\n\t\tlog.Fatal(err)\n\t}\n\tfmt.Println(Code([]byte(scanner.Text())))\n}"  
+  },
+  {
+    "problem_id":4,
+    "language":"py",
+    "start_code":"def Code(chars):\n  ",
+    "help_code":"s = list(input())\nprint(Code(s))"
   }
+
 ]

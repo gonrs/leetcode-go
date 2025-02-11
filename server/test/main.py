@@ -12,6 +12,7 @@ for item in data:
 
 # Преобразуем обновленный массив обратно в JSON
 updated_json = json.dumps(data, indent=2)
+print(updated_json)
 with open("./test/test.json", "w", encoding="utf-8") as file:
     # Записываем данные в файл
     json.dump(updated_json, file, indent=2, ensure_ascii=False)

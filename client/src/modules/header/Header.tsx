@@ -9,7 +9,7 @@ const Header: FC = ({}) => {
 				<h2>App</h2>
 			</Link>
 			<div>
-        HUYYYUYUUY
+        
 			</div>
 		</header>
 	)
