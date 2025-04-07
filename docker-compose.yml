@@ -1,8 +1,8 @@
-version: '3'
+version: "3"
 services:
   client:
     build:
-      context: ./client 
+      context: ./client
       dockerfile: Dockerfile
     ports:
       - "5173:5173"
@@ -15,12 +15,12 @@ services:
     environment:
       - VITE_URL=http://localhost:8080
   server:
-    build: 
+    build:
       context: ./server
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
     image: gonr/pt:pt-server
     environment:
-      - PORT=8080
-      - DB_URL=postgresql://db_1_57z4_user:rCBCpSg2GCIIX77xV1eIw5IOMfYQNN4L@dpg-cukf1btds78s739n73pg-a.oregon-postgres.render.com/db_1_57z4
+      - PORT=:8080
+      - DB_URL=postgresql://mydb_sszr_user:e4pgEfpW6zPFrQTsiNzjs5Zc6JfaNXNY@dpg-cvpv86c9c44c73e1eaa0-a.oregon-postgres.render.com/mydb_sszr
